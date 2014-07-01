@@ -9,7 +9,7 @@
 # Mandatory: no
 # Default:
 # PidFile=/tmp/zabbix_agentd.pid
-PidFile=/var/run/zabbix/zabbix_agentd.pid
+PidFile=<%= node['zabbix_agent']['pid_file'] %>
 
 ### Option: LogFile
 #	Name of log file.
@@ -18,7 +18,7 @@ PidFile=/var/run/zabbix/zabbix_agentd.pid
 # Mandatory: no
 # Default:
 # LogFile=
-LogFile=/var/log/zabbix-agent/zabbix_agentd.log
+LogFile=<%= node['zabbix_agent']['log_file'] %>
 
 ### Option: LogFileSize
 #	Maximum size of log file in MB.
@@ -28,7 +28,7 @@ LogFile=/var/log/zabbix-agent/zabbix_agentd.log
 # Range: 0-1024
 # Default:
 # LogFileSize=1
-LogFileSize=0
+LogFileSize=<%= node['zabbix_agent']['log_file_size'] %>
 
 ### Option: DebugLevel
 #	Specifies debug level
@@ -57,7 +57,7 @@ LogFileSize=0
 #
 # Mandatory: no
 # Default:
-# EnableRemoteCommands=0
+EnableRemoteCommands=0
 
 ### Option: LogRemoteCommands
 #	Enable logging of executed shell commands as warnings.
@@ -78,7 +78,11 @@ LogFileSize=0
 # Mandatory: yes
 # Default:
 # Server=
-Server=localhost
+Server=<%= node['zabbix_agent']['server'] %>
+
+<% if !node['zabbix_agent']['server_active'].nil? -%>
+ServerActive=<%= node['zabbix_agent']['server_active'] %>
+<% end -%>
 
 ### Option: Hostname
 #	Unique, case sensitive hostname.
@@ -87,7 +91,9 @@ Server=localhost
 #
 # Mandatory: no
 # Default:
-# Hostname=
+<% if !node['zabbix_agent']['hostname'].nil? -%>
+Hostname= <%= node['zabbix_agent']['hostname'] %>
+<% end -%>
 
 ### Option: HostnameItem
 #	Item used for generating Hostname if it is undefined.
@@ -95,7 +101,13 @@ Server=localhost
 #
 # Mandatory: no
 # Default:
-# HostnameItem=system.hostname
+<% if !node['zabbix_agent']['system_hostname'].nil? -%>
+HostnameItem=system.hostname
+<% end -%>
+
+<% if !node['zabbix_agent']['host_metadata'].nil? -%>
+HostMetadata=<%= node['zabbix_agent']['host_metadata'] %>
+<% end -%>
 
 ### Option: ListenPort
 #	Agent will listen on this port for connections from the server.
@@ -103,7 +115,7 @@ Server=localhost
 # Mandatory: no
 # Range: 1024-32767
 # Default:
-# ListenPort=10050
+ListenPort=<%= node['zabbix_agent']['listen_port'] %>
 
 ### Option: ListenIP
 #	List of comma delimited IP addresses that the agent should listen on.
@@ -218,7 +230,7 @@ Server=localhost
 
 # Include=/etc/zabbix/zabbix_agentd.userparams.conf
 # Include=/etc/zabbix/zabbix_agentd/
-Include=/etc/zabbix/zabbix_agentd.conf.d/
+Include=<%= node['zabbix_agent']['include_dir'] %>
 
 ####### USER-DEFINED MONITORED PARAMETERS #######
 
