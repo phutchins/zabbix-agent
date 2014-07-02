@@ -1,4 +1,5 @@
 default['zabbix_agent']['install_method'] = 'package'
+default['zabbix_agent']['tmp_dir'] = '/tmp'
 default['zabbix_agent']['pid_file'] = '/var/run/zabbix/zabbix_agentd.pid'
 default['zabbix_agent']['log_file'] = '/var/log/zabbix-agent/zabbix_agentd.log'
 default['zabbix_agent']['log_file_size'] = 0
