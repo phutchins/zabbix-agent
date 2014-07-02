@@ -57,7 +57,9 @@ LogFileSize=<%= node['zabbix_agent']['log_file_size'] %>
 #
 # Mandatory: no
 # Default:
-EnableRemoteCommands=0
+<% if !node['zabbix_agent']['enable_remote_commands'].nil? -%>
+  EnableRemoteCommands=<%= node['zabbix_agent']['enable_remote_commands'] %>
+<% end -%>
 
 ### Option: LogRemoteCommands
 #	Enable logging of executed shell commands as warnings.
@@ -66,7 +68,9 @@ EnableRemoteCommands=0
 #
 # Mandatory: no
 # Default:
-# LogRemoteCommands=0
+<% if !node['zabbix_agent']['log_remote_commands'].nil? -%>
+  LogRemoteCommands=<%= node['zabbix_agent']['log_remote_commands'] %>
+<% end -%>
 
 ##### Passive checks related
 
