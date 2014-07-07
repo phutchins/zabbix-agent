@@ -5,7 +5,7 @@ execute "download_zabbix_repo_package" do
   action :run
 end
 execute "install_repo_package" do
-  command "dpkg -i zabbix-release_2.2-1+precise_all.deb"
+  command "dpkg -i /tmp/zabbix-release_2.2-1+precise_all.deb"
   not_if "dpkg -l | grep zabbix-release"
   action :run
 end
