@@ -127,6 +127,9 @@ ListenPort=<%= node['zabbix_agent']['listen_port'] %>
 # Mandatory: no
 # Default:
 # ListenIP=0.0.0.0
+<% if !node['zabbix_agent']['listen_ip'].nil? -%>
+ListenIP=<%= node['zabbix_agent']['listen_ip'] %>
+<% end -%>
 
 ### Option: DisablePassive
 #	Disable passive checks. The agent will not listen on any TCP port.
