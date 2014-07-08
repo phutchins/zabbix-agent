@@ -1,4 +1,4 @@
-default['zabbix_agent']['install_method'] = 'package'
+default['zabbix_agent']['install_method'] = 'repo_package'
 default['zabbix_agent']['tmp_dir'] = '/tmp'
 default['zabbix_agent']['pid_file'] = '/var/run/zabbix/zabbix_agentd.pid'
 default['zabbix_agent']['log_file'] = '/var/log/zabbix/zabbix_agentd.log'
@@ -12,3 +12,5 @@ default['zabbix_agent']['include_dir'] = '/etc/zabbix/zabbix_agentd.d/'
 default['zabbix_agent']['enable_remote_commands'] = nil
 default['zabbix_agent']['log_remote_commands'] = nil
 default['zabbix_agent']['host_metadata'] = nil
+default['zabbix_agent']['ubuntu']['repo_package_url'] = "http://repo.zabbix.com/zabbix/2.2/ubuntu/pool/main/z/zabbix-release/"
+default['zabbix_agent']['ubuntu']['repo_package_name'] = "zabbix-release_2.2-1+precise_all.deb"

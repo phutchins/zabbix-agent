@@ -1,6 +1,8 @@
 case node['zabbix_agent']['install_method']
 when 'source'
   include_recipe 'zabbix-agent::source'
+when 'repo-package'
+  include_recipe 'zabbix-agent::repo_package'
 when 'package'
   include_recipe 'zabbix-agent::package'
 end
