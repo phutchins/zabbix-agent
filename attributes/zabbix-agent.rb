@@ -1,4 +1,4 @@
-default['zabbix_agent']['install_method'] = 'repo_package'
+default['zabbix_agent']['install_method'] = 'repo-package'
 default['zabbix_agent']['tmp_dir'] = '/tmp'
 default['zabbix_agent']['pid_file'] = '/var/run/zabbix/zabbix_agentd.pid'
 default['zabbix_agent']['log_file'] = '/var/log/zabbix/zabbix_agentd.log'
